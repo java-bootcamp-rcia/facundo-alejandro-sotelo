@@ -1,0 +1,13 @@
+
+
+
+
+Comentarios a tener en cuanta, para mi persona.
+
+Patrones de diseño.
+Profundizar en Spring boot - Java
+Leer acerca de Maven.
+Base de datos y conexiones.
+
+Practicar.
+
