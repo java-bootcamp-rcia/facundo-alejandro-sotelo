@@ -15,11 +15,11 @@ public class FactoryRest implements AbstractFactory {
 
     @Override
     public ConectionRest getURL(String url) {
-        if("http::Compras".equalsIgnoreCase(url)){
+        if("http::Shops".equalsIgnoreCase(url)){
             return new RestShop();
         }
         else
-            if("http::Ventas".equalsIgnoreCase(url)){
+            if("http::Sells".equalsIgnoreCase(url)){
                 return new RestSells();
             }
         return null;

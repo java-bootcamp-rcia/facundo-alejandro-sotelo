@@ -6,10 +6,10 @@ public class RestSells implements ConectionRest {
 
 
     @Override
-    public String recibirURL(String url) {
-        if (!url.equalsIgnoreCase("")){
-            return "Conexion establecida";
+    public String getURL(String url) {
+        if ("Sells".equalsIgnoreCase(url)){
+            return "Successful connection";
         }
-        return null;
+        return "Cannot connect...";
     }
 }

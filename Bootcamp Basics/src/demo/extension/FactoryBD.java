@@ -15,7 +15,7 @@ public class FactoryBD implements AbstractFactory {
             return new ConectionSQL();
         }
         else
-            if(motor.equalsIgnoreCase("MYSQL")){
+            if("MYSQL".equalsIgnoreCase(motor)){
                 return new ConectionMySQL();
             }
         return null;

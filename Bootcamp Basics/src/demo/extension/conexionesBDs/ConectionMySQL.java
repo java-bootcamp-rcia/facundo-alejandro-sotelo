@@ -5,24 +5,24 @@ import demo.extension.factory.ConectionBD;
 public class ConectionMySQL implements ConectionBD {
 
     private String user;
-    private String cadenaConexion;
-    private String nombreBD;
+    private String connectionString;
+    private String dbName;
 
     public ConectionMySQL(){
         this.user = "root";
-        this.cadenaConexion = "localhost:3306";
-        this.nombreBD = "mydb";
+        this.connectionString = "localhost:3306";
+        this.dbName = "mydb";
     }
 
 
     @Override
-    public String conectar() {
-        return "Conexion Exitosa";
+    public String connect() {
+        return "Successful connection";
     }
 
     @Override
-    public String desconectar() {
-        return "No se pudo establecer una conexion";
+    public String disconnect() {
+        return "Disconnecting... Disconnected";
     }
 
     public String getUser() {
@@ -33,20 +33,20 @@ public class ConectionMySQL implements ConectionBD {
         this.user = user;
     }
 
-    public String getCadenaConexion() {
-        return cadenaConexion;
+    public String getConnectionString() {
+        return connectionString;
     }
 
-    public void setCadenaConexion(String cadenaConexion) {
-        this.cadenaConexion = cadenaConexion;
+    public void setConnectionString(String connectionString) {
+        this.connectionString = connectionString;
     }
 
-    public String getNombreBD() {
-        return nombreBD;
+    public String getDbName() {
+        return dbName;
     }
 
-    public void setNombreBD(String nombreBD) {
-        this.nombreBD = nombreBD;
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
     }
 
 

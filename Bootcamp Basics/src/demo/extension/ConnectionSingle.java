@@ -22,9 +22,9 @@ public final class ConnectionSingle {
 
     public static ConnectionSingle getInstance(String root, String pass, String nameDb){
         if("root".equalsIgnoreCase(root) && "mydb".equalsIgnoreCase(nameDb)){
-            return getter = new ConnectionSingle("Conexion exitosa");
+            return getter = new ConnectionSingle("Connection successful");
         }
-        return getter = new ConnectionSingle("Sin Conexion");
+        return getter = new ConnectionSingle("Without connection");
     }
 
 
