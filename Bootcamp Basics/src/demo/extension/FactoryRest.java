@@ -1,26 +1,26 @@
 package demo.extension;
 
-import demo.extension.conexionesBDs.RestCompras;
-import demo.extension.conexionesBDs.RestVentas;
+import demo.extension.conexionesBDs.RestShop;
+import demo.extension.conexionesBDs.RestSells;
 import demo.extension.factory.AbstractFactory;
-import demo.extension.factory.IConexionBD;
-import demo.extension.factory.IConexionREST;
+import demo.extension.factory.ConectionBD;
+import demo.extension.factory.ConectionRest;
 
 public class FactoryRest implements AbstractFactory {
 
     @Override
-    public IConexionBD getBD(String motor) {
+    public ConectionBD getBD(String motor) {
         return null;
     }
 
     @Override
-    public IConexionREST getURL(String url) {
-        if(url.equalsIgnoreCase("http::Compras")){
-            return new RestCompras();
+    public ConectionRest getURL(String url) {
+        if("http::Compras".equalsIgnoreCase(url)){
+            return new RestShop();
         }
         else
-            if(url.equalsIgnoreCase("http::Ventas")){
-                return new RestVentas();
+            if("http::Ventas".equalsIgnoreCase(url)){
+                return new RestSells();
             }
         return null;
     }

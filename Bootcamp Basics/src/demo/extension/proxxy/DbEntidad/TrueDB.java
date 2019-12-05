@@ -1,20 +1,20 @@
 package demo.extension.proxxy.DbEntidad;
 
 import demo.extension.proxxy.DBConection;
-import demo.extension.proxxy.IDBConection;
+import demo.extension.proxxy.DBConectionInt;
 
-public class TrueDB implements IDBConection {
+public class TrueDB implements DBConectionInt {
 
 
     @Override
-    public DBConection conectar(String nameBD, String host, String pass) {
+    public DBConection connect(String nameBD, String host, String pass) {
        return new DBConection(nameBD, host, pass);
     }
 
     @Override
-    public String desconectar(DBConection db) {
+    public String disconnect(DBConection db) {
         if(db != null){
-            return "Desconectando...\n Desconectado";
+            return "Disconnecting...\n Disconnected";
         }
         return "-1";
     }

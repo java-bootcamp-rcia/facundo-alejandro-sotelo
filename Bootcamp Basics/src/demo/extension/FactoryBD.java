@@ -1,28 +1,28 @@
 package demo.extension;
 
-import demo.extension.conexionesBDs.ConexionMySQL;
-import demo.extension.conexionesBDs.ConexionSQL;
+import demo.extension.conexionesBDs.ConectionMySQL;
+import demo.extension.conexionesBDs.ConectionSQL;
 import demo.extension.factory.AbstractFactory;
-import demo.extension.factory.IConexionBD;
-import demo.extension.factory.IConexionREST;
+import demo.extension.factory.ConectionBD;
+import demo.extension.factory.ConectionRest;
 
 public class FactoryBD implements AbstractFactory {
 
 
     @Override
-    public IConexionBD getBD(String motor) {
-        if(motor.equalsIgnoreCase("SQL") || motor.equalsIgnoreCase("SQL Server")){
-            return new ConexionSQL();
+    public ConectionBD getBD(String motor) {
+        if("SQL".equalsIgnoreCase(motor) || "SQL Server".equalsIgnoreCase(motor)){
+            return new ConectionSQL();
         }
         else
             if(motor.equalsIgnoreCase("MYSQL")){
-                return new ConexionMySQL();
+                return new ConectionMySQL();
             }
         return null;
     }
 
     @Override
-    public IConexionREST getURL(String url) {
+    public ConectionRest getURL(String url) {
         return null;
     }
 }
