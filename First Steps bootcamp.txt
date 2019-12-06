@@ -1,0 +1,15 @@
+
+
+
+
+Some comments to myself:
+
+Design patterns;
+In deep learning of Spring boot and Java;
+Read about Maven;
+Data base and connections;
+
+Practice a lot !! Quite important;
+
+
+
