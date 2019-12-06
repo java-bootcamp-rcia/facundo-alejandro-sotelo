@@ -67,15 +67,17 @@ class Blog{
     }
 
     protected boolean showRecentEntries(){
+        int delimiter = 0;
         if(this.list.size() > 0){
             Iterator iter = list.iterator();
-            do{
+            while(iter.hasNext() && delimiter < 10){
                 System.out.println(iter.next());
+                delimiter++;
                 if(!iter.hasNext()){
                     System.out.println(iter.next());
                     return true;
                 }
-            }while(true);
+            }
         }
         return false;
     }
