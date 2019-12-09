@@ -1,8 +1,8 @@
 package demo.extension.conexionesBDs;
 
-import demo.extension.factory.ConectionRest;
+import demo.extension.factory.ConnectionRest;
 
-public class RestShop implements ConectionRest {
+public class RestShop implements ConnectionRest {
 
     @Override
     public String getURL(String url) {

@@ -3,18 +3,18 @@ package demo.extension;
 import demo.extension.conexionesBDs.RestShop;
 import demo.extension.conexionesBDs.RestSells;
 import demo.extension.factory.AbstractFactory;
-import demo.extension.factory.ConectionBD;
-import demo.extension.factory.ConectionRest;
+import demo.extension.factory.ConnectionBD;
+import demo.extension.factory.ConnectionRest;
 
 public class FactoryRest implements AbstractFactory {
 
     @Override
-    public ConectionBD getBD(String motor) {
+    public ConnectionBD getBD(String motor) {
         return null;
     }
 
     @Override
-    public ConectionRest getURL(String url) {
+    public ConnectionRest getURL(String url) {
         if("http::Shops".equalsIgnoreCase(url)){
             return new RestShop();
         }

@@ -1,6 +1,10 @@
-package demo.extension.builder;
+/**
+ * This class, basically is used for his father to implement the connection and disconnection methods
+ *
+ */
 
-import demo.extension.factory.ConectionBD;
+
+package demo.extension.builder;
 
 public class SQLServerConnect extends ConnectionBuilder {
 
@@ -12,6 +16,7 @@ public class SQLServerConnect extends ConnectionBuilder {
 
     @Override
     public String disconnect() {
+        this.bd = null;
         return "Now disconnecting... Disconnected";
     }
 }

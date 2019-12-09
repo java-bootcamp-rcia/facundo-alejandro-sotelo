@@ -1,3 +1,11 @@
+/**
+ * Class that uses an object from ConnectionBuilder
+ * Interacts with the object from ConnectionBuilder to make use of its methods
+ * In order to do this, ConnectionDirector just creates a couple of "dummy" methods
+ * That only calls the methods from the object
+ */
+
+
 package demo.extension.builder;
 
 public class ConnectionDirector {

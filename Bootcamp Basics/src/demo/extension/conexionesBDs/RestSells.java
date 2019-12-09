@@ -1,8 +1,8 @@
 package demo.extension.conexionesBDs;
 
-import demo.extension.factory.ConectionRest;
+import demo.extension.factory.ConnectionRest;
 
-public class RestSells implements ConectionRest {
+public class RestSells implements ConnectionRest {
 
 
     @Override
