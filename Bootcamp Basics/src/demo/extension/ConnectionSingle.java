@@ -1,3 +1,9 @@
+/**
+ * Example of a Singleton pattern to connect to a database
+ * The "getMessage" method is just to know if the actual connection works
+ * @return the message to know if the connection works or not
+ **/
+
 package demo.extension;
 
 public final class ConnectionSingle {

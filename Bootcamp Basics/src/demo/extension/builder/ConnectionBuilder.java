@@ -1,6 +1,11 @@
-package demo.extension.builder;
+/**
+ * Creates an object of ConnectionDB and implements certain common behavior
+ * Gives a method getConnection to @return this ConnectionBD object
+ * And then just Override the toString method returning the same toString in the ConnectionBD class
+ */
 
-import demo.extension.factory.ConectionBD;
+
+package demo.extension.builder;
 
 public abstract class ConnectionBuilder {
 

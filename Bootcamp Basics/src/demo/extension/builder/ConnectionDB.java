@@ -1,3 +1,10 @@
+/**
+ * Class that provides an entity to do a builder connection by several different classes
+ * It receives the host, pass and the actual user, to match a concrete connection or database
+ * toString method that @return the running host for this instance and the user using that host
+ */
+
+
 package demo.extension.builder;
 
 public class ConnectionDB {
