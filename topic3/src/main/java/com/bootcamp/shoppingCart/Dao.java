@@ -1,18 +1,28 @@
+/**
+ * Dao interface for ShoppingCart
+ * Ideally should extend the CrudRepository as a way to complete the persistence
+ */
+
 package com.bootcamp.shoppingCart;
+
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface Dao<T>{
 
-    Optional<T> get(int id);
 
-    List<T> getAll();
+public interface Dao <T>{
 
-    void saveElement(T t);
+    Optional get(int id);
 
-    void update(T t, String [] elements);
+    List<Elements> getAll();
 
-    void delete(T t);
+    void save(Elements elements);
 
+    void update(Elements elements, String[] params);
+
+    void delete(Elements elements);
+
+    void deleteById(int id);
 }
