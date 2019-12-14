@@ -1,0 +1,60 @@
+-- Script for the database;
+
+drop database if exists high_school;
+create database high_school default charset utf8;
+use high_school;
+
+create table Students (
+registration_Number int not null primary key auto_increment,
+first_Name varchar(60) not null,
+last_Name varchar(60) not null,
+date_Birth date not null 
+);
+
+create table Teachers (
+id_Teacher int not null primary key auto_increment,
+first_Name varchar(60) not null,
+last_Name varchar (60) not null,
+date_Birth date not null
+);
+create table Courses (
+course_Number int not null primary key auto_increment,
+assigned_Teacher int not null,
+course_Name varchar(50) not null,
+hours_Week int not null,
+constraint FK_assigned_teacher foreign key (assigned_Teacher) references Teachers (id_Teacher)
+);
+
+create table day_Week(
+id_Day_Week int primary key not null auto_increment,
+name_Day varchar(30) not null
+);
+
+create table Schedules (
+course_Number_id int not null primary key,
+start_Time time not null,
+end_Time time not null,
+day_Week tinyint null,
+constraint FK_course_Number_id foreign key(course_Number_id) references Courses (course_Number)
+on delete cascade
+on update cascade,
+constraint FK_day_Week foreign key (day_Week) references day_Week (id_Day_Week)
+on delete cascade
+on update cascade
+);
+
+create table Students_Assist(
+id_Students_Assit int not null auto_increment,
+student_Id int not null,
+course_Id int not null,
+parcial_Note_1 tinyint null,
+parcial_Note_2 tinyint null,
+parcial_Note_3 tinyint null,
+final_Note tinyint null,
+constraint student_Id foreign key(student_Id)references Students(registration_Number)
+on delete cascade
+on update cascade,
+constraint course_Id foreign key(course_Id)references Courses(course_Number)
+on delete cascade
+on update cascade
+);

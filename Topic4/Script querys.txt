@@ -1,0 +1,67 @@
+-- Script querys
+- item 3 list students and teachers for a given course;
+
+use high_school;
+select distinct cs.course_Name as Name_Course, tt.last_Name as Teacher_LastName,
+tt.first_Name as Teacher_FirstName, st.last_Name as Student_LastName,
+st.first_Name as Student_FirstName
+from high_school.courses cs
+inner join high_school.teachers tt
+on cs.assigned_Teacher = tt.id_Teacher
+inner join high_school.students st
+inner join high_school.students_assist sht
+on st.registration_Number = sht.student_Id
+and sht.course_Id = cs.course_Number
+order by st.last_Name, st.first_Name;
+
+- item 4 percent of students that passed failed a given course;
+
+
+use high_school;
+select format (count(*)*100/
+	(
+	select count(*) from high_school.students st
+	inner join high_school.students_assist sta
+	on st.registration_Number = sta.student_Id
+	inner join high_school.courses cs
+	on cs.course_Number = sta.course_Id
+	where cs.course_Name = "Java"
+	),2) as Percent_Passed,
+	(
+		select format (count(*)*100/
+		(
+			select count(*) from high_school.students st
+			inner join high_school.students_assist sta
+			on st.registration_Number = sta.student_Id
+			inner join high_school.courses cs
+			on cs.course_Number = sta.course_Id
+			where cs.course_Name = "Java"
+		),2) from high_school.students st
+	inner join high_school.students_assist sta
+	on st.registration_Number = sta.student_Id
+	inner join high_school.courses cs
+	on cs.course_Number = sta.course_Id
+	where cs.course_Name = "Java" and sta.final_Note < 6
+	) as Percent_Failed
+from high_school.students st
+inner join high_school.students_assist sta
+on st.registration_Number = sta.student_Id
+inner join high_school.courses cs
+on cs.course_Number = sta.course_Id
+where sta.final_Note >= 6 and cs.course_Name = "Java"
+;
+
+- item 5 given teacher, list the timeline for each course that he is assigned to (order by date), and the course name:
+
+select tc.last_Name as last_Name, tc.first_Name as first_Name,
+dw.name_Day as _Day, sc.start_Time as start_time, sc.end_Time as end_time,
+cs.course_Name as course_Name
+from high_school.teachers tc
+inner join high_school.courses cs
+on cs.assigned_Teacher = tc.id_Teacher
+inner join high_school.schedules sc
+on sc.course_Number_id = cs.course_Number
+inner join high_school.day_week dw
+on sc.day_Week = dw.id_Day_Week
+where tc.last_Name = "Castañeda"
+order by dw.name_Day;
