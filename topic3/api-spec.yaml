@@ -1,0 +1,130 @@
+swagger: "2.0"
+
+info:
+  description: "Spec for a shop cart API in order to provide
+  basic understandable information about how the API is supposed to work"
+  version: "1.0.0"
+  title: "Shopping Cart"
+
+host: "localhost:8080"
+basepath: /
+tags:
+  - name: "Elements"
+    description: "Those object that will be added to the shop cart list"
+  - name: "ShoppingCart"
+    description: "Will provide the different API methods to do the communication between the controller and persistence"
+  - name: "Dao"
+    description: "Will provide the structure that has to be followed by the service class (ShoppingCart)"
+paths:
+  /shop:
+    get:
+      tags:
+        - "ShoppingCart"
+          summary: "Get all elements from the shoppingCart"
+          operationId: "getAll"
+          consumes:
+            - application/json
+          produces:
+            - application/json
+    save:
+      tags:
+        - "ShoppingCart"
+          summary: "Adds a new element to the shoppingCart"
+          opertaionId: "save"
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: "body"
+              name: "element"
+              description: "element that will be added to the shoppingCart"
+              required: true
+            responses:
+              400:
+                description: "invalid input"
+
+  /shop/{elementId}:
+    get:
+      tags:
+        - "ShoppingCart"
+          summary: "Get an element by id"
+          operationId: "get"
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - name: "elementId"
+              in: "query"
+              description: "The element id that will be needed to get the element"
+              required: true
+              type: "integer"
+          responses:
+            200:
+              description: "successful operation"
+            400:
+              description: "invalid ID given"
+            404:
+              description: "Element not found"
+    delete:
+      tags:
+        - "ShoppingCart"
+          summary: "Deletes an element"
+          operationId: "deleteById"
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - name: "id"
+              in: "path"
+              description: "element ID to delete"
+              required: true
+              type: "integer"
+              format: "int64"
+          responses:
+            400:
+              description: "Invalid ID supplied"
+            404:
+              description: "Element not found"
+  /shop/{element}:
+    put:
+      tags:
+        - "ShoppingCart"
+          summary: "Update an element"
+          operationId: "update"
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - name: "element"
+              in: "query"
+              description: "given element that will be updated"
+              required: true
+          responses:
+            400:
+              description: "Invalid element"
+            404:
+              description: "Element not found"
+    delete:
+      tags:
+        - "ShoppingCart"
+          summary: "Delete an element"
+          description: ""
+          operation: "delete"
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - name: "element"
+              in: "query"
+              description: "given element that will be deleted"
+              required: true
+          responses:
+            400:
+              description: "Invalid element"
+            404:
+              description: "Element not found"
