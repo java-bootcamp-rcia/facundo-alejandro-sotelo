@@ -1,7 +1,3 @@
-/**
- * User service to connect and use the User class
- */
-
 package com.bootcamp.shoppingCart.UserPackage;
 
 import org.springframework.stereotype.Service;
@@ -11,13 +7,18 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * UserService class, that will be using User class in order to respond (ideally) the petitions of the clientSide;
+ * Is the business logic side of the application;
+ */
+
 @Service
 public class UserService implements UserDao<User> {
 
     private List <User> userList = new ArrayList<>();
 
     /**
-     *
+     * Using the list of user, will search inside the list, an element that has the same provided property;
      * @param id: to find the User object with the specific id;
      * @return if there are data, returns the specific object that has that id
      */
@@ -27,8 +28,8 @@ public class UserService implements UserDao<User> {
     }
 
     /**
-     *
-     * @return the list of user objects that are in this class
+     * Using the list of user, the method just will respond the petition made in the clientSide;
+     * @return the whole list with its elements (if it has elements);
      */
     @Override
     public List<User> getAll() {
@@ -53,8 +54,10 @@ public class UserService implements UserDao<User> {
     /**
      *
      * @param user User object that will be updated
-     * @param params
-     * @return
+     * @param params The String array that will have the information that is needed to change from the user
+     * @return As well as in the save method will provide a true in case that the object is not null +
+     * ideally should see two things, if the set and changes can be done, and if the user has changed in any +
+     * of its properties, otherwise should not do anything and maybe return a message
      */
     @Override
     public boolean update(User user, String [] params) {
@@ -69,9 +72,15 @@ public class UserService implements UserDao<User> {
         return false;
     }
 
+    /**
+     *
+     * @param user the user that will be deleted
+     * @return true if the object is not null +
+     * as well as in the other two methods should see if the user can be deleted
+     */
     @Override
     public boolean delete(User user) {
-        if(null != user){
+        if(null != user && !this.userList.isEmpty()){
             this.userList.remove(user);
             return true;
         }

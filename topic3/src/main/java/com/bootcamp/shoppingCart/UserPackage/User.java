@@ -1,10 +1,11 @@
-/**
- * The User class that will be implemented and used by the UserService
- * Will be the Entity
- */
-
 package com.bootcamp.shoppingCart.UserPackage;
 
+
+/**
+ * User class, that will be used for the service in a way to persist (ideally) information;
+ * This is the Entity used for the service (although everything could be seen as a service);
+ * The entity should has  the same information as its counterpart in the DB;
+ */
 public class User {
 
     private int id;
@@ -23,6 +24,10 @@ public class User {
         this.age = age;
     }
 
+    /**
+     * Override toString() method, that will give an structure to give basic information about the user
+     * @return the basic information of the user
+     */
     @Override
     public String toString() {
         return this.name + " " + this.lastName;
