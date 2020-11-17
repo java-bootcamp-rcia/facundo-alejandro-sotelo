@@ -1,0 +1,160 @@
+swagger2: "2.0"
+info:
+  description: "brief use of the shopping cart made for and in the topic 3 of services; bootcamp"
+  version: "1.0.0"
+  title: "ShoppingCart API Rest"
+host: "http:\\localhost:8080"
+basePath: "/shop"
+tags:
+  - name: "Element"
+    description: "Base class to construct the shopping cart"
+  - name: "ShopCart"
+    description: "Class that simulates the basic operations (both the shopping cart and business logic layer and also part of the Crud)"
+  - name: "Shopping"
+    description: "Controller for the shopCart api; Will get the petitions from the client"
+  - name: "ElementCartRepository"
+    description: "Takes care of the persistence part; Will give the basic Crud operations and alike"
+schemes:
+  - "Http"
+paths:
+  /shop:
+    get:
+      tags:
+        - "shop"
+          summary: "get all elements from the shopCart"
+          description: ""
+          operationId: "getAll"
+          consumes:
+            - "application/json"
+          produces:
+            - "application/json"
+          responses:
+            200:
+              description: "Successful operation"
+            500:
+              description: "Server error"
+    post:
+      tags:
+        - "shop"
+          summary: "add new element to the shop cart"
+          description: ""
+          operationId: "save"
+          consumes:
+            - "application/json"
+          produces:
+            - "application/json"
+          parameters:
+            - in: "body"
+              name: "element"
+              description: "element that will be added to the cart"
+              required: true
+          responses:
+            201:
+              description: "Successful operation, added element"
+            405:
+              description: "Invalid input"
+            409:
+              description: "Some fields are incorrect or unacceptable"
+  /shop/{id}:
+    get:
+      tags:
+        - "shop"
+          summary: "get an specific element from the cart given for the id"
+          description: ""
+          operationId: "getElement"
+          consumes:
+            - "application/json"
+          produces:
+            - "application/json"
+          parameters:
+            - in: "path"
+              name: "id"
+              description: "id for the element that will be searched"
+              required: true
+          responses:
+            200:
+              description: "Successful operation"
+            400:
+              description: "Something went wrong"
+            404:
+              description: "Nonexistent resource"
+  /shop/element/{id}:
+    put:
+      tags:
+        - "shop"
+          summary: "Update an existing element on the shop cart list"
+          description: ""
+          operationId: "update"
+          consumes:
+            - "application/json"
+          produces:
+            - "application/json"
+          parameters:
+            - name: "id"
+              in: "path"
+              description: "id of required element to be updated"
+              required: true
+            - in: "body"
+              name: "element"
+              description: "new values for the existing object that want to be updated"
+              required: true
+          responses:
+            200:
+              description: "Successful operation"
+            400:
+              description: "Something went wrong"
+            405:
+              description: "Invalid input"
+    delete:
+      tags:
+        - "shop"
+          summary: "delete an existing element inside the cart shop list"
+          description: ""
+          operationId: "deleteById"
+          consumes:
+            - "application/json"
+          produces:
+            - "application/json"
+          parameters:
+            - name: "id"
+              in: "path"
+              description: "id of the element that will be deleted"
+              required: true
+            - in: "body"
+              name: "element"
+              description: "Additional information about the element"
+              required: true
+          responses:
+            200:
+              description: "Successful operation"
+            400:
+              description: "Could not process the request"
+            404:
+              description: "Nonexistence resource"
+            405:
+              description: "Invalid input"
+  shop/{element}:
+    delete:
+      tags:
+        - "shop"
+          summary: "the whole element to be deleted"
+          description: ""
+          operationId: "deleteElement"
+          consumes:
+            - "application/json"
+          produces:
+            - "application/json"
+          parameters:
+            - in: "body"
+              name: "element"
+              description: "the element to be deleted"
+              required: true
+          responses:
+            200:
+              description: "Successful description"
+            400:
+              description: "Something went wrong"
+            404:
+              description: "Nonexistence resource"
+            405:
+                description: "Invalid input"
